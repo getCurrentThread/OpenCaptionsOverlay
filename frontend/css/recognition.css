@@ -1,0 +1,78 @@
+html {
+    min-height: 100vh;
+}
+
+body {
+    background: #454d5d;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    max-width: 980px;
+    margin-top: 24px;
+}
+
+.toast {
+    margin-top: 8px;
+}
+
+.main-card {
+    margin-top: 8px;
+}
+
+.link-card {
+    margin-top: 8px;
+}
+
+.result-card {
+    margin-top: 8px;
+}
+
+.mic-buttons .btn {
+    margin-right: 8px;
+}
+
+.mic-buttons .form-switch {
+    display: inline;
+}
+
+#sansVolume {
+    display: inline;
+    width: 100px;
+    padding-top: 0.6rem;
+}
+
+#micToggle.badge-primary:after {
+    background: #5755d9;
+}
+
+#micToggle.badge-success:after {
+    background: #32b643;
+}
+
+#micToggle.badge-warning:after {
+    background: #ffb700;
+}
+
+#micToggle.badge-error:after {
+    background: #e85600;
+}
+
+#micToggle.badge-red:after {
+    background: #cf1300;
+}
+
+.recognition-result {
+    height: 100px;
+    background: #f7f8f9;
+    color: inherit;
+    display: block;
+    line-height: 1.5;
+    overflow-x: auto;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.1rem;
+}

@@ -1,0 +1,97 @@
+:root {
+    --profile-url: url("../assets/image/sans.png");
+}
+
+body {
+    overflow: hidden;
+}
+
+.root-container {
+    font-family: gulim;
+    font-weight: bold;
+    font-smooth: never;
+    font-size: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.cc-wrapper {
+    height: 6em;
+    overflow: hidden;
+    position: relative;
+}
+
+.cc-container {
+    bottom: 0.1em;
+    left: 3.2em;
+    right: 1.5em;
+    position: absolute;
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cc-container.hide {
+    opacity: 0;
+}
+
+.cc-content {
+    background: #000000;
+    border: 0.12em solid #ffffff;
+    padding: 0.5em 0.8em;
+    max-height: 4.1em;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.text-transition-wrapper {
+    height: 3.5em;
+    width: 16em;
+    overflow: hidden;
+    display: inline-block;
+    transition: height 0.15s cubic-bezier(0.075, 0.82, 0.165, 1), width 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.text-transition {
+    position: absolute;
+    width: 16em;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    max-height: 3.5em;
+    overflow: hidden;
+}
+
+.text p {
+    margin: 0;
+    color: #ffffff;
+    padding-left: 4.5em;
+    text-indent: -0.8em;
+}
+
+#interim {
+    color: #dddddd;
+}
+
+.profile {
+    display: inline-block;
+    position: absolute;
+    top: 1em;
+}
+
+.profile .profile-bg {
+    height: 2.7em;
+    width: 2.7em;
+    overflow: hidden;
+}
+
+.profile .profile-img {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: var(--profile-url);
+}
