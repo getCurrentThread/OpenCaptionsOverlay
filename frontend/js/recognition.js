@@ -198,6 +198,10 @@ function updateCaption(final_str, interim, confidence) {
     INTERIM_DOM.textContent = interim;
 
     last_interim = interim;
+
+    if(final_str.trim()) {
+        appendLog("message", final_str);
+    }
 }
 
 listenSocket();
