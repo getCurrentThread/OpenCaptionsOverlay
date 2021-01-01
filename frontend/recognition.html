@@ -51,9 +51,9 @@
                     </div>
                     <div class="card-body">
                         <div class="mic-buttons">
-                            <button id="micToggle" class="btn btn-success" data-badge="&nbsp;">인식 시작</button>
-                            <a class="btn" href="{{ url_for('logout') }}">로그인 정보 갱신</a>
-                            <button id="copy" class="btn" data-badge="&nbsp;">오버레이 주소 복사</button>
+                            <button id="micToggle" class="btn btn-success btn-sm" data-badge="&nbsp;">인식 시작</button>
+                            <a class="btn btn-sm" href="{{ url_for('logout') }}">로그인 정보 갱신</a>
+                            <button id="copy" class="btn btn-sm" data-badge="&nbsp;">오버레이 주소 복사</button>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <h3 class="mb-2">로그</h3>
-                            <h6 class="text-gray mb-0">최대 300줄까지 표시</h6>
+                            <h6 class="text-gray mb-0">최대 300줄까지 최근 로그가 표시됩니다</h6>
                         </div>
                     </div>
                     <div class="card-body">
@@ -84,6 +84,10 @@
                                 <tbody id="logBody"></tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-left text-gray">주의 : 화면을 새로고침하면 로그가 초기화됩니다</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="downloadLog()">로그 다운로드</button>
                     </div>
                 </div>
             </div>

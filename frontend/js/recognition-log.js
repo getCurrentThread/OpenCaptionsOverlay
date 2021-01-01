@@ -50,7 +50,7 @@ function downloadLog() {
     let content = '';
 
     globalLog.map(function(item) {
-        content += `[${item.time}]\t(${item.type})\t${item.message}\n`;
+        content += `[${item.time}] (${item.type}) ${item.message}\n`;
     });
 
     const element = document.createElement('a');
