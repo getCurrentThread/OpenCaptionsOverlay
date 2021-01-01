@@ -35,17 +35,6 @@
                 </div>
             </div>
             <div class="column col-8 mt-4">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                
-                    {% for category, message in messages %}
-                    <div class="toast text-center">
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                
-                {% endif %}
-                {% endwith %}
                 <div class="card custom-card">
                     <div class="card-header">
                         <h3>오버레이</h3>
@@ -70,7 +59,10 @@
                 </div>
                 <div class="card custom-card mt-4">
                     <div class="card-header">
-                        <div class="card-title">최근인식결과</div>
+                        <div class="card-title">
+                            <h3 class="mb-2">최근인식결과</h3>
+                            <h6 class="text-gray mb-0">마지막으로 인식된 결과를 표시합니다</h6>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="recognition-result">
@@ -81,12 +73,16 @@
                 </div>
                 <div class="card custom-card mt-4 mb-4">
                     <div class="card-header">
-                        <div class="card-title">로그</div>
+                        <div class="card-title">
+                            <h3 class="mb-2">로그</h3>
+                            <h6 class="text-gray mb-0">최대 300줄까지 표시</h6>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <!-- <div class="log-wrapper" id="logWrapper" data-simplebar data-simplebar-auto-hide="false">
-                        </div> -->
                         <div class="log-wrapper" id="logWrapper">
+                            <table>
+                                <tbody id="logBody"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -95,8 +91,8 @@
             <div class="column col-4 mt-4">
                 <div class="card custom-card">
                     <div class="card-header">
-                        <h3>설정</h3>
-                        <h6 class="text-gray">자막, 배경, 외곽선 세부 설정</h6>
+                        <h3 class="mb-2">설정</h3>
+                        <h6 class="mb-0 text-gray">자막, 배경, 외곽선 세부 설정</h6>
                     </div>
 
                     <ul class="tab tab-block">
@@ -256,4 +252,21 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/recognition.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/recognition-setting.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/recognition-log.js') }}"></script>
+
+    <script>
+        (function() {
+            appendLog("system", "Ready");
+        })();
+    </script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    
+        {% for category, message in messages %}
+        <script>
+            appendLog("system", "{{ message }}");
+        </script>
+        {% endfor %}
+    
+    {% endif %}
+    {% endwith %}
 </body>

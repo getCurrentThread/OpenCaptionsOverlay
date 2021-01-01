@@ -101,6 +101,7 @@ function toggleMic() {
         MIC_TOGGLE_DOM.classList.add('btn-success');
         MIC_TOGGLE_DOM.classList.remove('badge');
         recognition.abort();
+        appendLog("system", "음성 인식을 종료합니다.");
     } else {
         is_mic_on = true;
         MIC_TOGGLE_DOM.textContent = '인식 종료';
@@ -108,6 +109,7 @@ function toggleMic() {
         MIC_TOGGLE_DOM.classList.add('btn-error');
         MIC_TOGGLE_DOM.classList.add('badge');
         recognition.start();
+        appendLog("system", "음성 인식을 시작합니다.");
     }
 }
 
