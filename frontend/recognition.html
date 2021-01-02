@@ -51,9 +51,9 @@
                     </div>
                     <div class="card-body">
                         <div class="mic-buttons">
-                            <button id="micToggle" class="btn btn-success btn-sm" data-badge="&nbsp;">인식 시작</button>
-                            <a class="btn btn-sm" href="{{ url_for('logout') }}">로그인 정보 갱신</a>
-                            <button id="copy" class="btn btn-sm" data-badge="&nbsp;">오버레이 주소 복사</button>
+                            <button id="micToggle" class="btn btn-success btn-sm" data-badge="&nbsp;"><i class="icon icon-shutdown"></i> &nbsp;인식 시작</button>
+                            <a class="btn btn-sm" href="{{ url_for('logout') }}"><i class="icon icon-people"></i> &nbsp;로그인 정보 갱신</a>
+                            <button id="copy" class="btn btn-sm" data-badge="&nbsp;"><i class="icon icon-copy"></i> &nbsp;오버레이 주소 복사</button>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="float-left text-gray">주의 : 화면을 새로고침하면 로그가 초기화됩니다</span>
-                        <button class="btn btn-primary btn-sm float-right" onclick="downloadLog()">로그 다운로드</button>
+                        <button class="btn btn-primary btn-sm float-right" onclick="downloadLog()"><i class="icon icon-download"></i> &nbsp;로그 다운로드</button>
                     </div>
                 </div>
             </div>
@@ -95,49 +95,76 @@
             <div class="column col-4 mt-4">
                 <div class="card custom-card">
                     <div class="card-header">
-                        <h3 class="mb-2">설정</h3>
+                        <div class="columns">
+                            <div class="column">
+                                <h3 class="mb-2">설정</h3>
+                            </div>
+                            <div class="column">
+                                <button class="btn btn-sm float-right" onclick="clearSettings()"><i class="icon icon-refresh"></i> &nbsp;초기화</button>
+                            </div>
+                        </div>
                         <h6 class="mb-0 text-gray">자막, 배경, 외곽선 세부 설정</h6>
                     </div>
 
                     <ul class="tab tab-block">
                         <li class="tab-item active" id="tabFont">
-                          <a href="javascript:void(0);" onclick="toggleTab('font')">자막</a>
+                            <a href="javascript:void(0);" onclick="toggleTab('font')">자막</a>
                         </li>
                         <li class="tab-item" id="tabBg">
-                          <a href="javascript:void(0);" onclick="toggleTab('bg')">배경</a>
+                            <a href="javascript:void(0);" onclick="toggleTab('bg')">배경</a>
                         </li>
                         <li class="tab-item" id="tabBorder">
-                          <a href="javascript:void(0);" onclick="toggleTab('border')">외곽선</a>
+                            <a href="javascript:void(0);" onclick="toggleTab('border')">외곽선</a>
                         </li>
+                        <li class="tab-item" id="tabBorder">
+                            <a href="javascript:void(0);" onclick="toggleTab('profile')">프로필</a>
+                          </li>
                         <li class="tab-item" id="tabEtc">
                             <a href="javascript:void(0);" onclick="toggleTab('etc')">실험실</a>
-                          </li>
+                        </li>
                     </ul>
 
                     <div class="card-body setting-card" id="settingFont">
                     
                         <div class="columns">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextFont">폰트</label>
+                                <label class="form-label" for="settingFontFamily">폰트</label>
                             </div>
                             <div class="column col-7 col-ml-auto">
-                                <select class="form-select" id="settingTextFont">
-                                    <option>배달의민족 주아체</option>
-                                    <option>Slack</option>
+                                <select class="form-select" id="settingFontFamily" onchange="setFontFamily(this.value)">
+                                    <option value="Jua" style="font-family: 'Jua';">배달의민족 주아체</option>
+                                    <option value="sans-serif"  style="font-family: 'sans-serif';">Sans-serif</option>
                                     <option>Skype</option>
                                     <option>Hipchat</option>
                                 </select>
                             </div>
                         </div>
-
+                        <div class="columns mt-3">
+                            <div class="column col-4">
+                                <label class="form-label" for="settingFontWeight">굵기</label>
+                            </div>
+                            <div class="column col-7 col-ml-auto">
+                                <select class="form-select" id="settingFontWeight" onchange="setFontWeight(this.value)">
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
+                                    <option value="300">300</option>
+                                    <option value="400">400</option>
+                                    <option value="500">500</option>
+                                    <option value="600">600</option>
+                                    <option value="700">700</option>
+                                    <option value="800">800</option>
+                                    <option value="900">900</option>
+                                </select>
+                            </div>
+                        </div>
                     
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextSize">크기</label>
+                                <label class="form-label" for="settingFontSize">크기</label>
                             </div>
                             <div class="column col-7 col-ml-auto">
                                 <div class="input-group">
-                                    <input type="number" class="form-input" placeholder="16" value="16" min="1" max="100" id="settingTextSize">
+                                    <input type="number" class="form-input" placeholder="16" value="16" min="1" max="100" id="settingFontSize"  onchange="setFontSize(this.value)">
                                     <span class="input-group-addon">px</span>
                                 </div>
                             </div>
@@ -145,23 +172,21 @@
 
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextBold"><b>굵게</b></label>
+                                <label class="form-label" for="settingColor">색상</label>
                             </div>
-                            <div class="column col-2 col-ml-auto">
-                                <label class="form-switch">
-                                    <input type="checkbox" id="settingTextBold">
-                                    <i class="form-icon"></i>
-                                </label>
+                            <div class="column col-4 col-ml-auto">
+                                <label class="form-label float-right"><b id="displayFontColor">#000000</b></label>
                             </div>
                         </div>
+                        <div class="color-picker-font" id="settingFontColor"></div>
 
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextItalic"><i>기울임</i></label>
+                                <label class="form-label" for="settingFontStyle"><i>기울임</i></label>
                             </div>
                             <div class="column col-2 col-ml-auto">
                                 <label class="form-switch">
-                                    <input type="checkbox" id="settingTextItalic">
+                                    <input type="checkbox" id="settingFontStyle" onchange="setFontStyle(this.checked)">
                                     <i class="form-icon"></i>
                                 </label>
                             </div>
@@ -173,23 +198,25 @@
                     <div class="card-body setting-card d-none" id="settingBg">
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextItalic">색상</label>
+                                <label class="form-label" for="settingColor">색상</label>
                             </div>
                             <div class="column col-4 col-ml-auto">
-                                <label class="form-label float-right"><b>#000000</b></label>
+                                <label class="form-label float-right"><b id="displayBackgroundColor">#000000</b></label>
                             </div>
                         </div>
-                        <div class="color-picker-bg"></div>
+                        <div class="color-picker-bg" id="settingColor"></div>
 
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextItalic">투명도</label>
+                                <label class="form-label" for="settingBackgroundOpacity">투명도</label>
                             </div>
-                            <div class="column col-4 col-ml-auto">
-                                <label class="form-label float-right"><b>100%</b></label>
+                            <div class="column col-7 col-ml-auto">
+                                <div class="input-group">
+                                    <input type="number" class="form-input" placeholder="100" value="100" min="0" step="10" max="100" id="settingBackgroundOpacity" onchange="setBackgroundOpacity(this.value)">
+                                    <span class="input-group-addon">%</span>
+                                </div>
                             </div>
                         </div>
-                        <input class="slider tooltip" type="range" min="0" max="100" value="100" oninput="this.setAttribute('value', this.value);">        
                     </div>
 
                     <div class="card-body setting-card d-none" id="settingBorder">
@@ -198,36 +225,44 @@
                                 <label class="form-label" for="settingTextItalic">색상</label>
                             </div>
                             <div class="column col-4 col-ml-auto">
-                                <label class="form-label float-right"><b>#000000</b></label>
+                                <label class="form-label float-right"><b id="displayBorderColor">#000000</b></label>
                             </div>
                         </div>
                         <div class="color-picker-border"></div>
 
                         <div class="columns mt-3">
                             <div class="column col-4">
-                                <label class="form-label" for="settingTextItalic">굵기</label>
+                                <label class="form-label" for="settingBorderWidth">굵기</label>
                             </div>
-                            <div class="column col-4 col-ml-auto">
-                                <label class="form-label float-right"><b>2px</b></label>
+                            <div class="column col-7 col-ml-auto">
+                                <div class="input-group">
+                                    <input type="number" class="form-input" placeholder="16" value="2" min="0" max="10" id="settingBorderWidth" onchange="setBorderWidth(this.value)">
+                                    <span class="input-group-addon">px</span>
+                                </div>
                             </div>
                         </div>
-                        <input class="slider tooltip" type="range" min="0" max="10" value="2" oninput="this.setAttribute('value', this.value);">
 
-                        <h6 class="mt-4">스타일</h6>
+                        <div class="mt-3">
+                            <label>스타일</label>
+                        </div>
                         <div class="form-group">
                             <label class="col-4 form-radio form-inline">
-                                <input type="radio" name="border-radius">
+                                <input type="radio" name="border-radius" onclick="setBorderRadius(0)">
                                 <i class="form-icon"></i> 각진
                             </label>
                             <label class="col-4 form-radio form-inline">
-                                <input type="radio" name="border-radius">
+                                <input type="radio" name="border-radius" onclick="setBorderRadius(1)">
                                 <i class="form-icon"></i> 둥근
                             </label>
                             <label class="col-3 form-radio form-inline">
-                                <input type="radio" name="border-radius">
+                                <input type="radio" name="border-radius" onclick="setBorderRadius(2)">
                                 <i class="form-icon"></i> 원형
                             </label>
                         </div>
+                    </div>
+
+                    <div class="card-body setting-card d-none" id="settingProfile">
+                        
                     </div>
 
                     <div class="card-body setting-card d-none" id="settingEtc">

@@ -59,6 +59,7 @@
 /*  */
 .pcr-button {
     width: 100% !important;
+    border: 1px solid #30303030;
 }
 .setting-card {
     padding-bottom: 16px !important;
