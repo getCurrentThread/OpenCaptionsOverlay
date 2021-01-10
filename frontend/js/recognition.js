@@ -206,5 +206,25 @@ function updateCaption(final_str, interim, confidence) {
     }
 }
 
+function copyOverlayLink() {
+    if(is_sans_mode) {
+        let url = document.getElementById("overlaySans").innerText;
+        let target = document.createElement("textarea");
+        document.body.appendChild(target);
+        target.value = url;
+        target.select();
+        document.execCommand('copy');
+        document.body.removeChild(target);
+    } else {
+        let url = document.getElementById("overlayNormal").innerText;
+        let target = document.createElement("textarea");
+        document.body.appendChild(target);
+        target.value = url;
+        target.select();
+        document.execCommand('copy');
+        document.body.removeChild(target);
+    }
+}
+
 listenSocket();
 initRecognition();

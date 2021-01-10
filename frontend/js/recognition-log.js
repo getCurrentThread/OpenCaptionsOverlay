@@ -18,7 +18,7 @@ function addLog(time, type, message) {
 }
 
 function appendLog(type, message) {
-    const time = getFormattedDate();
+    const time = getFormattedDate().substr(11);
 
     let tr = document.createElement("tr");
 
@@ -48,6 +48,7 @@ function appendLog(type, message) {
 
 function downloadLog() {
     let content = '';
+    let filename = 'oc_log_' + getFormattedDate().substr(0,10) + '.txt';
 
     globalLog.map(function(item) {
         content += `[${item.time}] (${item.type}) ${item.message}\n`;
@@ -55,7 +56,7 @@ function downloadLog() {
 
     const element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
-    element.setAttribute('download', 'oc_log.txt');
+    element.setAttribute('download', filename);
   
     element.style.display = 'none';
     document.body.appendChild(element);
