@@ -348,14 +348,12 @@ function initSettings() {
     document.getElementById("settingProfileLinkEnable").checked = localStorage.getItem("profileType") === 'link';
     document.getElementById("settingProfileLink").value = localStorage.getItem("profileLik");
     document.getElementById("settingProfileFileEnable").checked = localStorage.getItem("profileType") === 'file';
-    document.getElementById("dataProfileFile").value = localStorage.getItem("profileFile").substr(0,20) + "...";
+    if(localStorage.getItem("profileType") === 'file') document.getElementById("dataProfileFile").value = localStorage.getItem("profileFile").substr(0,20) + "...";
     if(localStorage.getItem("profileRadius") === "0") document.getElementsByName("profile-radius")[0].checked = true;
     else if(localStorage.getItem("profileRadius") === "10") document.getElementsByName("profile-radius")[1].checked = true;
     else if(localStorage.getItem("profileRadius") === "10000") document.getElementsByName("profile-radius")[2].checked = true;
     else document.getElementsByName("profile-radius")[2].checked = true;
-    document.getElementById("settingProfileBorderEnable").checked = localStorage.getItem("profileBorderEnable") == 'true';
-
-    
+    document.getElementById("settingProfileBorderEnable").checked = localStorage.getItem("profileBorderEnable") == 'true'; 
 }
 
 function clearSettings() {
