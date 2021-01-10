@@ -55,3 +55,8 @@ def overlay_sans():
     host = app.config.get("SERVER_HOME")
     return render_template("overlay-sans.html", host=host)
 
+
+@app.route("/overlay-v2")
+def overlay_v2():
+    host = app.config.get("SERVER_HOME")
+    return render_template("overlay-v2.html", host=host)

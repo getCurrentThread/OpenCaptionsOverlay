@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Open Captions Overlay - Overlay</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119887508-2"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-119887508-2');</script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Jua:400">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/overlay.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="root-container">
+        <div class="cc-wrapper">
+            <div class="cc-container">
+                <div class="cc-content">
+                    <div class="profile">
+                        <div class="profile-bg">
+                            <div class="profile-img"></div>
+                        </div>
+                    </div>
+                    <div class="text-transition-wrapper">
+                        <div class="text-transition">
+                            <div class="text-wrapper">
+                                <div class="text">
+                                    <p id="finalStr"></p>
+                                    <p id="interim"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script> const HOST = "{{ host }}"; </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/overlay.js') }}"></script>
+</body>
