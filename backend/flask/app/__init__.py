@@ -40,15 +40,23 @@ def index():
 
 @app.route("/recognition")
 def recognition():
+    host = app.config.get("SERVER_HOME")
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    return render_template("recognition.html")
+    return render_template("recognition.html", host=host)
 
 @app.route("/overlay")
 def overlay():
-    return render_template("overlay.html")
+    host = app.config.get("SERVER_HOME")
+    return render_template("overlay.html", host=host)
 
 @app.route("/overlay-sans")
 def overlay_sans():
-    return render_template("overlay-sans.html")
+    host = app.config.get("SERVER_HOME")
+    return render_template("overlay-sans.html", host=host)
 
+
+@app.route("/overlay-v2")
+def overlay_v2():
+    host = app.config.get("SERVER_HOME")
+    return render_template("overlay-v2.html", host=host)

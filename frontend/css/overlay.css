@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+
+:root {
+    --accent-color: #95BBDF;
+    --profile-url: url("../assets/image/profile.png");
+}
+
+body {
+    overflow: hidden;
+}
+
+.root-container {
+    font-family: "Jua", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.cc-wrapper {
+    height: 6em;
+    overflow: hidden;
+    position: relative;
+}
+
+.cc-container {
+    bottom: 0.1em;
+    left: 3.2em;
+    right: 1.5em;
+    position: absolute;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cc-container.hide {
+    opacity: 0;
+}
+
+.cc-content {
+    background: rgba(255, 255, 255, 0.7);
+    border: 0.12em solid var(--accent-color);
+    border-radius: 1.3em;
+    padding: 0.5em 0.8em;
+    max-height: 4.1em;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.text-transition-wrapper {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: height 0.15s cubic-bezier(0.075, 0.82, 0.165, 1), width 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.text-transition {
+    position: absolute;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    max-height: 4.1em;
+    overflow: hidden;
+}
+
+.text {
+    align-self: flex-end;
+}
+
+.text p {
+    margin: 0;
+    color: #000000;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+#interim {
+    color: #333333;
+}
+
+.profile {
+    position: absolute;
+    margin-left: -4em;
+    bottom: 0.4em;
+}
+
+.profile .profile-bg {
+    height: 2.3em;
+    width: 2.3em;
+    border-radius: 2.3em;
+    background-color: var(--accent-color);
+    border: 0.12em solid var(--accent-color);
+    overflow: hidden;
+}
+
+.profile .profile-img {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: var(--profile-url);
+}
